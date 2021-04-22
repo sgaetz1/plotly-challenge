@@ -32,13 +32,45 @@ function drawBargraph(sampleId) {
             title: "Top 10 Bacteria Cultures Found"
         }
 
-        Plotly.newPlot("bar", data, barLayout)
+        Plotly.newPlot("bar", data, barLayout);
 
     })
 }
 
 function drawBubblechart(sampleId) {
     console.log(`drawBubblechart(${sampleId})`);
+
+    d3.json("../data/samples.json").then(data => {
+        var samples = data.samples;
+        var resultArray = samples.filter(samp => samp.id == sampleId);
+        var result = resultArray[0];
+            
+        var otu_ids = result.otu_ids;
+        var otu_labels = result.otu_labels;
+        var sample_values = result.sample_values;
+
+        var trace1 = {
+            x: otu_ids,
+            y: sample_values,
+            mode: 'markers',
+            marker: {
+                size: sample_values,
+                color: otu_ids,
+                opacity: 1
+            },
+            text: otu_labels
+        }
+
+        var data = [trace1];
+
+        var bubbleLayout = {
+            title: "Bubble Chart",
+            xaxis: {title: "OTU ID"}
+        };
+
+        Plotly.newPlot("bubble", data, bubbleLayout);
+
+    })
 }
 
 function metaData(sampleId) {
