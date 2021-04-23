@@ -111,6 +111,42 @@ function metaData(sampleId) {
     })
 }
 
+function warshGauge(sampleId) {
+    console.log(`warshGauge(${sampleId})`);
+
+
+    d3.json("../data/samples.json").then(data => {
+        var metaData = data.metadata;
+        var resultArray = metaData.filter(meta => meta.id == sampleId);
+        var result = resultArray[0];
+        console.log(result);
+        var wfreq = result.wfreq;
+
+
+
+        var data = [
+            {
+                domain: { x: [0, 1], y: [0, 1] },
+                value: wfreq,
+                title: { text: "Belly Button Washing Frequency"},
+                type: "indicator",
+                mode: "gauge+number"
+                gauge: {
+                    axis: { range: [null,9]},
+                    steps: [
+                        { range: [0,3], color: "red"},
+                        {range: [3,6], color: "green"},
+                        {range: }
+                    ]
+                }
+            }
+        ];
+        
+        var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+        Plotly.newPlot('gauge', data, layout);
+    })
+}
+
 function optionChanged(newSampleId) {
     console.log(`User selected ${newSampleId}`);
 
@@ -138,6 +174,7 @@ d3.json("../data/samples.json").then(function(sampleData){
     drawBargraph(id);
     drawBubblechart(id);
     metaData(id);
+    warshGauge(id);
 
 });
 
