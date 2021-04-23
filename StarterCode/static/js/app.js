@@ -75,6 +75,37 @@ function drawBubblechart(sampleId) {
 
 function metaData(sampleId) {
     console.log(`metaData(${sampleId})`);
+
+    d3.json("../data/samples.json").then(data => {
+        var metaData = data.metadata;
+        var resultArray = metaData.filter(meta => meta.id == sampleId);
+        var result = resultArray[0];
+        console.log(result);
+
+        var id = result.id;
+        var ethnicity = result.ethnicity;
+        var gender = result.gender;
+        var age = result.age;
+        var location = result.location;
+        var bbtype = result.bbtype;
+        var wfreq = result.wfreq;
+        var info = [id,ethnicity,gender,age,location,bbtype,wfreq];
+
+
+        console.log(info);
+
+        
+        var ul = d3.select("#sample-metadata").append("ul");
+
+        ul.append("li").text(`id: ${id}`);
+
+        
+        
+            
+            
+            
+                       
+    })
 }
 
 function optionChanged(newSampleId) {
@@ -106,3 +137,35 @@ d3.json("../data/samples.json").then(function(sampleData){
     metaData(id);
 
 });
+
+// function getMonthlyData() {
+
+//     var queryUrl = `https://www.quandl.com/api/v3/datasets/WIKI/AMZN.json?start_date=2016-10-01&end_date=2017-10-01&collapse=monthly&api_key=${apiKey}`;
+//     d3.json(queryUrl).then(function(data) {
+//       var dates = unpack(data.dataset.data, 0);
+//       var openPrices = unpack(data.dataset.data, 1);
+//       var highPrices = unpack(data.dataset.data, 2);
+//       var lowPrices = unpack(data.dataset.data, 3);
+//       var closingPrices = unpack(data.dataset.data, 4);
+//       var volume = unpack(data.dataset.data, 5);
+//       (dates, openPrices, highPrices, lowPrices, closingPrices, volume);
+//       console.log(data);
+//     });
+    
+//   }
+  
+  
+//   function buildTable(dates, openPrices, highPrices, lowPrices, closingPrices, volume) {
+//     var table = d3.select("#summary-table");
+//     var tbody = table.select("tbody");
+//     var trow;
+//     for (var i = 0; i < 12; i++) {
+//       trow = tbody.append("tr");
+//       trow.append("td").text(dates[i]);
+//       trow.append("td").text(openPrices[i]);
+//       trow.append("td").text(highPrices[i]);
+//       trow.append("td").text(lowPrices[i]);
+//       trow.append("td").text(closingPrices[i]);
+//       trow.append("td").text(volume[i]);
+//     }
+//   }
