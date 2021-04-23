@@ -128,16 +128,18 @@ function warshGauge(sampleId) {
             {
                 domain: { x: [0, 1], y: [0, 1] },
                 value: wfreq,
-                title: { text: "Belly Button Washing Frequency"},
+                title: { text: "Belly Button Washes Per Week"},
                 type: "indicator",
-                mode: "gauge+number"
+                mode: "gauge+number",
                 gauge: {
                     axis: { range: [null,9]},
+                    bar: { color: "darkblue"},
                     steps: [
                         { range: [0,3], color: "red"},
                         {range: [3,6], color: "green"},
-                        {range: }
-                    ]
+                        {range: [6,9], color: "blue"}
+                    ],
+
                 }
             }
         ];
