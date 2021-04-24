@@ -37,6 +37,7 @@ function drawBargraph(sampleId) {
     })
 }
 
+// bubble chart
 function drawBubblechart(sampleId) {
     console.log(`drawBubblechart(${sampleId})`);
 
@@ -73,6 +74,7 @@ function drawBubblechart(sampleId) {
     })
 }
 
+// demographic info
 function metaData(sampleId) {
     console.log(`metaData(${sampleId})`);
 
@@ -111,6 +113,7 @@ function metaData(sampleId) {
     })
 }
 
+// wash gauge
 function warshGauge(sampleId) {
     console.log(`warshGauge(${sampleId})`);
 
@@ -155,12 +158,14 @@ function warshGauge(sampleId) {
     })
 }
 
+// event change
 function optionChanged(newSampleId) {
     console.log(`User selected ${newSampleId}`);
 
     drawBargraph(newSampleId);
     drawBubblechart(newSampleId);
     metaData(newSampleId);
+    warshGauge(newSampleId);
     
 }
 
@@ -179,6 +184,7 @@ d3.json("../data/samples.json").then(function(sampleData){
 
     var id = sampleNames[0];
 
+    // call the functions to initialize graphs 
     drawBargraph(id);
     drawBubblechart(id);
     metaData(id);
