@@ -66,7 +66,8 @@ function drawBubblechart(sampleId) {
 
         var bubbleLayout = {
             title: "Frequency of Operational Taxonomic Units",
-            xaxis: {title: "OTU ID"}
+            xaxis: {title: "OTU ID"},
+            yaxis: {title: "Number of Units Present"}
         };
 
         Plotly.newPlot("bubble", data, bubbleLayout);
