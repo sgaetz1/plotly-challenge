@@ -5,7 +5,7 @@ console.log("app.js loaded");
 function drawBargraph(sampleId) {
     console.log(`drawBargraph(${sampleId})`);
 
-    d3.json("/samples.json").then(data => {
+    d3.json("../samples.json").then(data => {
         // console.log(data);
 
         var samples = data.samples;
@@ -41,7 +41,7 @@ function drawBargraph(sampleId) {
 function drawBubblechart(sampleId) {
     console.log(`drawBubblechart(${sampleId})`);
 
-    d3.json("/samples.json").then(data => {
+    d3.json("../samples.json").then(data => {
         var samples = data.samples;
         var resultArray = samples.filter(samp => samp.id == sampleId);
         var result = resultArray[0];
@@ -81,7 +81,7 @@ function metaData(sampleId) {
     $("#sample-metadata").empty();
 
 
-    d3.json("/samples.json").then(data => {
+    d3.json("../samples.json").then(data => {
         var metaData = data.metadata;
         var resultArray = metaData.filter(meta => meta.id == sampleId);
         var result = resultArray[0];
@@ -118,7 +118,7 @@ function warshGauge(sampleId) {
     console.log(`warshGauge(${sampleId})`);
 
 
-    d3.json("/samples.json").then(data => {
+    d3.json("../samples.json").then(data => {
         var metaData = data.metadata;
         var resultArray = metaData.filter(meta => meta.id == sampleId);
         var result = resultArray[0];
@@ -170,7 +170,7 @@ function optionChanged(newSampleId) {
 }
 
 // get the samples data and print it to the console
-d3.json("/samples.json").then(function(sampleData){
+d3.json("../samples.json").then(function(sampleData){
     
     console.log(sampleData);
 
