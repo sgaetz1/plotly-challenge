@@ -1,7 +1,8 @@
 // make sure file loaded
 console.log("app.js loaded");
 
-// some of this code is from Dom in office hours
+// Portions of this code are taken directly from the instructor's office hours tutorial
+// function to draw the bar graph
 function drawBargraph(sampleId) {
     console.log(`drawBargraph(${sampleId})`);
 
@@ -33,11 +34,10 @@ function drawBargraph(sampleId) {
         }
 
         Plotly.newPlot("bar", data, barLayout);
-
     })
 }
 
-// bubble chart
+// function to build the bubble chart
 function drawBubblechart(sampleId) {
     console.log(`drawBubblechart(${sampleId})`);
 
@@ -70,11 +70,10 @@ function drawBubblechart(sampleId) {
         };
 
         Plotly.newPlot("bubble", data, bubbleLayout);
-
     })
 }
 
-// demographic info
+// function to display the demographic info
 function metaData(sampleId) {
     console.log(`metaData(${sampleId})`);
 
@@ -113,7 +112,7 @@ function metaData(sampleId) {
     })
 }
 
-// wash gauge
+// function to create the wash gauge
 function warshGauge(sampleId) {
     console.log(`warshGauge(${sampleId})`);
 
@@ -158,7 +157,7 @@ function warshGauge(sampleId) {
     })
 }
 
-// event change
+// event handler
 function optionChanged(newSampleId) {
     console.log(`User selected ${newSampleId}`);
 
@@ -169,7 +168,7 @@ function optionChanged(newSampleId) {
     
 }
 
-// get the samples data and print it to the console
+// get the samples data and print it to the console, get the first id, call functions to initialize graphs
 d3.json("./samples.json").then(function(sampleData){
     
     console.log(sampleData);
