@@ -64,7 +64,7 @@ function drawBubblechart(sampleId) {
         var data = [trace1];
 
         var bubbleLayout = {
-            title: "Bubble Chart",
+            title: "Frequency of Operational Taxonomic Units",
             xaxis: {title: "OTU ID"}
         };
 
@@ -135,16 +135,22 @@ function warshGauge(sampleId) {
                     axis: { range: [null,9]},
                     bar: { color: "darkblue"},
                     steps: [
-                        { range: [0,3], color: "red"},
-                        {range: [3,6], color: "green"},
-                        {range: [6,9], color: "blue"}
+                        { range: [0,2], color: "red"},
+                        {range: [2,4], color: "orange"},
+                        {range: [4,6], color: "yellow"},
+                        {range: [6,8], color: "lightgreen"},
+                        {range: [8,9], color: "blue"}
                     ],
 
                 }
             }
         ];
         
-        var layout = { width: 600, height: 500, margin: { t: 0, b: 0 } };
+        var layout = { width: 400, 
+            height: 300, 
+            margin: { t: 20, r: 10, l: 20, b: 20 } 
+        };
+
         Plotly.newPlot('gauge', data, layout);
     })
 }
